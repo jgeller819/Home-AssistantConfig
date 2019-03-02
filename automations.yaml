@@ -1,0 +1,10 @@
+- alias: 'Lights on at sunset'
+  trigger:
+    - platform: sun
+      event: sunset
+  action:
+    service: hue.hue_activate_scene
+    data:
+      group_name: "Loft"
+      scene_name: "Relax"
+      
