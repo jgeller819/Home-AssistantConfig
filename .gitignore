@@ -22,3 +22,4 @@ google_calendars.yaml
 
 !home-panel-config.json
 !.travis.yml
+!travis-ssl/
