@@ -19,8 +19,8 @@ default_config:
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
   base_url: !secret base_url
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
+  ssl_certificate: ssl/fullchain.pem
+  ssl_key: ssl/privkey.pem
 
 # Sensors
 sensor:
@@ -69,14 +69,14 @@ sensor:
     origin: !secret josh_work
     destination: !secret home_address
     options:
-      mode: transit      
-      
+      mode: transit
+
 media_player:
   - platform: firetv
     name: Living Room FireTV
     host: 192.168.7.26
-    adbkey: "adb/adbkey"
-    
+#    adbkey: "adb/adbkey"
+
 weather:
   - platform: darksky
     name: Hourly Forecast
@@ -85,11 +85,11 @@ weather:
     name: Daily Forecast
     api_key: !secret dark_sky_api_key
     mode: daily
-    
+
 google:
   client_id: !secret google_cal_client_id
   client_secret: !secret google_cal_client_secret
-    
+
 discovery:
 
 history:
@@ -103,10 +103,10 @@ ios:
 # Text to speech
 tts:
   - platform: google
-  
+
 ifttt:
   key: !secret ifttt_key
-  
+
 influxdb:
   host: a0d7b954-influxdb
   port: 8086
@@ -141,4 +141,3 @@ panel_iframe:
     title: Terminal
     icon: mdi:console
     url: http://192.168.7.163:7681
-    
