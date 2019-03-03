@@ -21,3 +21,4 @@ known_devices.yaml
 google_calendars.yaml
 
 !home-panel-config.json
+!.travis.yml
