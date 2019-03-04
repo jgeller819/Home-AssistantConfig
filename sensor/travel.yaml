@@ -1,0 +1,18 @@
+- platform: uber
+  server_token: !secret uber_server_token
+  product_ids:
+    - '6450cc0f-4d39-4473-8632-1e2c2049fefe'
+- platform: google_travel_time
+  api_key: !secret google_maps_key
+  name: Perkins Coie
+  origin: !secret home_address
+  destination: !secret paige_work
+  options:
+    mode: transit
+- platform: google_travel_time
+  api_key: !secret google_maps_key
+  name: Facebook
+  origin: !secret josh_work
+  destination: !secret home_address
+  options:
+    mode: transit

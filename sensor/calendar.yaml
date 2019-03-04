@@ -1,0 +1,10 @@
+- platform: jewish_calendar
+  diaspora: true
+  sensors:
+    - weekly_portion
+    - holiday_name
+    - upcoming_candle_lighting
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'

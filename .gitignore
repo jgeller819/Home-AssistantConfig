@@ -23,3 +23,8 @@ google_calendars.yaml
 !home-panel-config.json
 !.travis.yml
 !travis-ssl/
+!automation/
+!customize/
+!group/
+!package/
+!sensor/

@@ -1,0 +1,17 @@
+- platform: yr
+- platform: darksky
+  api_key: !secret dark_sky_api_key
+  forecast:
+    - 0
+    - 1
+  monitored_conditions:
+    - summary
+    - icon
+    - temperature
+    - sunset_time
+    - precip_type
+    - precip_intensity
+    - precip_intensity_max
+    - minutely_summary
+    - cloud_cover
+    - sunrise_time

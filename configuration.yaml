@@ -11,7 +11,8 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: America/Los_Angeles
   # Customization file
-  customize: !include customize.yaml
+  customize: !include_dir_merge_named customize
+  packages: !include_dir_named packages
 
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
@@ -21,57 +22,6 @@ http:
   base_url: !secret base_url
   ssl_certificate: !secret ssl_certificate
   ssl_key: !secret ssl_key
-
-# Sensors
-sensor:
-  # Weather prediction
-  - platform: yr
-  - platform: darksky
-    api_key: !secret dark_sky_api_key
-    forecast:
-      - 0
-      - 1
-    monitored_conditions:
-      - summary
-      - icon
-      - temperature
-      - sunset_time
-  - platform: jewish_calendar
-    diaspora: true
-    sensors:
-      - weekly_portion
-      - holiday_name
-      - upcoming_candle_lighting
-  - platform: time_date
-    display_options:
-      - 'time'
-      - 'date'
-  - platform: uber
-    server_token: !secret uber_server_token
-    product_ids:
-      - '6450cc0f-4d39-4473-8632-1e2c2049fefe'
-  - platform: ups
-    username: !secret ups_username
-    password: !secret ups_password
-  - platform: fedex
-    username: !secret fedex_username
-    password: !secret fedex_password
-  - platform: google_travel_time
-    api_key: !secret google_maps_key
-    name: Perkins Coie
-    origin: !secret home_address
-    destination: !secret paige_work
-    options:
-      mode: transit
-  - platform: google_travel_time
-    api_key: !secret google_maps_key
-    name: Facebook
-    origin: !secret josh_work
-    destination: !secret home_address
-    options:
-      mode: transit
-  - platform: travisci
-    api_key: !secret github_travis_api_key
 
 media_player:
   - platform: firetv
@@ -93,18 +43,10 @@ google:
   client_secret: !secret google_cal_client_secret
 
 discovery:
-
 history:
-
 sun:
-
 updater:
-
 ios:
-
-# Text to speech
-tts:
-  - platform: google
 
 ifttt:
   key: !secret ifttt_key
@@ -117,10 +59,6 @@ influxdb:
   password: !secret influx_pw
   max_retries: 3
   default_measurement: state
-
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
 
 panel_iframe:
   nodered:
@@ -143,3 +81,8 @@ panel_iframe:
     title: Terminal
     icon: mdi:console
     url: http://192.168.7.163:7681
+
+sensor: !include_dir_merge_list sensor
+group: !include_dir_merge_list group
+automation: !include_dir_merge_list automation automations.yaml
+script: !include_dir_merge_list script
