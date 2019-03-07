@@ -28,6 +28,12 @@ media_player:
     name: Living Room FireTV
     host: 192.168.7.26
 #    adbkey: "adb/adbkey"
+    
+device_tracker:
+  - platform: eero_tracker
+    consider_home: 300
+    interval_seconds: 60
+    only_macs: "34:08:BC:12:62:D8"
 
 weather:
   - platform: darksky
