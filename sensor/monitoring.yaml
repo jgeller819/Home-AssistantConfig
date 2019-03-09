@@ -1,0 +1,8 @@
+- platform: systemmonitor
+  resources:
+    - type: memory_use
+    - type: memory_free
+    - type: load_1m
+    - type: network_in
+    - type: network_out
+    - type: processor_use

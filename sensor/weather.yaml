@@ -1,4 +1,3 @@
-- platform: yr
 - platform: darksky
   api_key: !secret dark_sky_api_key
   forecast:
@@ -15,3 +14,4 @@
     - minutely_summary
     - cloud_cover
     - sunrise_time
+- platform: moon
