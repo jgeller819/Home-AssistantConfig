@@ -27,7 +27,7 @@ media_player:
   - platform: firetv
     name: Living Room FireTV
     host: 192.168.7.26
-    adbkey: "adb/adbkey"
+    adbkey: !secret adb_key
     adb_server_ip: 127.0.0.1
     
 device_tracker:
