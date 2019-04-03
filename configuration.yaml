@@ -81,6 +81,10 @@ panel_iframe:
     title: Grafana
     icon: mdi:chart-timeline
     url: http://192.168.7.167:3000
+  portainer:
+    title: Portainer
+    icon: mdi:docker
+    url: http://192.168.7.167:9000
 
 # binary_sensor:
 #   - platform: hue_custom

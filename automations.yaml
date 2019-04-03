@@ -1,5 +1,6 @@
 - id: sunset
   alias: 'Sunset Routine'
+  initial_state: true
   trigger:
     - platform: sun
       event: sunset
@@ -25,6 +26,7 @@
 
 - id: sunrise
   alias: 'Sunrise Routine'
+  initial_state: true
   trigger:
     - platform: sun
       event: sunrise
