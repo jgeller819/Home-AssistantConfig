@@ -1,0 +1,46 @@
+- id: sunset
+  alias: 'Sunset Routine'
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: '-00:30:00'
+    - platform: time
+      at: '20:00:00'
+  action:
+    - service:  cover.close_cover
+      data:
+        entity_id: cover.study_blinds
+    - service:  cover.close_cover
+      data:
+        entity_id: cover.lr_short_left_blinds
+    - service:  cover.close_cover
+      data:
+        entity_id: cover.lr_short_right_blinds
+    - service:  cover.close_cover
+      data:
+        entity_id: cover.lr_tall_left_blinds
+    - service:  cover.close_cover
+      data:
+        entity_id: cover.lr_tall_right_blinds
+
+- id: sunrise
+  alias: 'Sunrise Routine'
+  trigger:
+    - platform: sun
+      event: sunrise
+  action:
+    - service:  cover.open_cover
+      data:
+        entity_id: cover.study_blinds
+    - service:  cover.open_cover
+      data:
+        entity_id: cover.lr_short_left_blinds
+    - service:  cover.open_cover
+      data:
+        entity_id: cover.lr_short_right_blinds
+    - service:  cover.open_cover
+      data:
+        entity_id: cover.lr_tall_left_blinds
+    - service:  cover.open_cover
+      data:
+        entity_id: cover.lr_tall_right_blinds

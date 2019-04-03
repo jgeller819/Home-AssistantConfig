@@ -16,20 +16,11 @@ homeassistant:
 
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
+config:
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
-  base_url: !secret base_url
-  ssl_certificate: !secret ssl_certificate
-  ssl_key: !secret ssl_key
 
-media_player:
-  - platform: firetv
-    name: Living Room FireTV
-    host: 192.168.7.26
-    adbkey: !secret adb_key
-    adb_server_ip: 127.0.0.1
-    
 device_tracker:
   - platform: eero_tracker
     consider_home: 300
@@ -51,12 +42,11 @@ google:
   client_secret: !secret google_cal_client_secret
   
 speedtestdotnet:
-  server_id: 9436
+  server_id: 8864
 
 discovery:
-history:
-sun:
-updater:
+logger:
+  default: info
 ios:
 hue:
 
@@ -70,7 +60,7 @@ ifttt:
   key: !secret ifttt_key
 
 influxdb:
-  host: a0d7b954-influxdb
+  host: influxdb
   port: 8086
   database: !secret influx_db
   username: !secret influx_username
@@ -79,31 +69,23 @@ influxdb:
   default_measurement: state
 
 panel_iframe:
-  nodered:
-    title: Node-RED
-    icon: mdi:sitemap
-    url: https://192.168.7.163:1880
-  configurator:
-    title: Configurator
-    icon: mdi:wrench
-    url: https://192.168.7.163:3218
+  # nodered:
+  #   title: Node-RED
+  #   icon: mdi:sitemap
+  #   url: https://192.168.7.163:1880
   influxdb:
     title: InfluxDB
     icon: mdi:chart-areaspline
-    url: https://192.168.7.163:8888
+    url: http://192.168.7.167:8888
   grafana:
     title: Grafana
     icon: mdi:chart-timeline
-    url: https://192.168.7.163:3000
-  terminal:
-    title: Terminal
-    icon: mdi:console
-    url: http://192.168.7.163:7681
+    url: http://192.168.7.167:3000
 
-binary_sensor:
-  - platform: hue_custom
+# binary_sensor:
+#   - platform: hue_custom
 
 sensor: !include_dir_merge_list sensor
 group: !include_dir_merge_list group
-automation: !include_dir_merge_list automation automations.yaml
+automation: !include automations.yaml
 script: !include_dir_merge_list script
