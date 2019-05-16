@@ -8,21 +8,25 @@
     - platform: time
       at: '20:00:00'
   action:
-    - service:  cover.close_cover
-      data:
-        entity_id: cover.study_blinds
-    - service:  cover.close_cover
+    - service: cover.close_cover
       data:
         entity_id: cover.lr_short_left_blinds
-    - service:  cover.close_cover
+    - service: cover.close_cover
       data:
         entity_id: cover.lr_short_right_blinds
-    - service:  cover.close_cover
+    - service: cover.close_cover
       data:
         entity_id: cover.lr_tall_left_blinds
-    - service:  cover.close_cover
+    - service: cover.close_cover
       data:
         entity_id: cover.lr_tall_right_blinds
+    - service: hue.hue_activate_scene
+      data:
+        group_name: "Bedroom"
+        scene_name: "Read"
+    - service: cover.close_cover
+      data:
+        entity_id: cover.study_blinds
 
 - id: sunrise
   alias: 'Sunrise Routine'
@@ -31,10 +35,7 @@
     - platform: sun
       event: sunrise
   action:
-    - service:  cover.open_cover
-      data:
-        entity_id: cover.study_blinds
-    - service:  cover.open_cover
+    - service: cover.open_cover
       data:
         entity_id: cover.lr_short_left_blinds
     - service:  cover.open_cover
@@ -46,3 +47,11 @@
     - service:  cover.open_cover
       data:
         entity_id: cover.lr_tall_right_blinds
+    # Only open the guest blinds if not in guest mode
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+    - service:  cover.open_cover
+      data:
+        entity_id: cover.study_blinds
+        
