@@ -26,7 +26,7 @@ device_tracker:
     consider_home: 300
     interval_seconds: 60
     only_macs: "34:08:BC:12:62:D8"
-  - platform: hue_custom
+  - platform: huesensor
 
 cloud:
   alexa:
@@ -107,13 +107,13 @@ discovery:
 logger:
   default: info
 ios:
-hue:
 
 custom_updater:
   card_urls:
    - https://raw.githubusercontent.com/atomic7777/atomic_calendar/master/tracker.json
   component_urls:
-   - https://raw.githubusercontent.com/robmarkcole/Hue-sensors-HASS/master/custom_updater.json   
+   - https://raw.githubusercontent.com/robmarkcole/Hue-sensors-HASS/master/custom_updater.json
+   - https://raw.githubusercontent.com/jrlucier/eero_tracker/master/custom_updater.json
 
 ifttt:
   key: !secret ifttt_key
@@ -127,26 +127,14 @@ influxdb:
   max_retries: 3
   default_measurement: state
 
+# binary_sensor:
+#   - platform: hue_custom
+
 panel_iframe:
-  # nodered:
-  #   title: Node-RED
-  #   icon: mdi:sitemap
-  #   url: https://192.168.7.163:1880
-  influxdb:
-    title: InfluxDB
-    icon: mdi:chart-areaspline
-    url: http://192.168.7.167:8888
   grafana:
     title: Grafana
     icon: mdi:chart-timeline
-    url: http://192.168.7.167:3000
-  portainer:
-    title: Portainer
-    icon: mdi:docker
-    url: http://192.168.7.167:9000
-
-# binary_sensor:
-#   - platform: hue_custom
+    url: http://192.168.7.177:3000
 
 sensor: !include_dir_merge_list sensor
 group: !include groups.yaml
