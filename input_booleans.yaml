@@ -1,2 +1,4 @@
-
-  
+guest_mode:
+  name: Guests staying in the guest room
+  initial: off
+  icon: mdi:account-multiple-plus
